@@ -53,9 +53,10 @@ autocmd Filetype java call AuJava()
 function! AuJava ()
     inoremap <buffer> Sop System.out.print
     inoremap <buffer> Psvm public static void main(String[] args) {<cr>}<esc>O
+	" TODO not working
+    nnoremap <buffer> <F5> execute '!javac % && java ' . expand("%:t:r")
 endfunction
 
 autocmd BufNewFile *.java
-  \ exe "normal Opublic class " . expand('%:t:r') . " {\n}\<Esc>1G"
+  \ exe "normal Opublic class " . expand("%:t:r") . " {\n}\<Esc>1G"
 
-set timeoutlen=2000
