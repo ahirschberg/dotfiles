@@ -162,4 +162,22 @@ exec_always nm-applet
 # add suspend bindings
 bindsym $mod+Shift+s exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true 
 
-exec /usr/libexec/gnome-settings-daemon
+# fix ugly win95 looking window themes
+exec /usr/bin/gnome-settings-daemon
+
+## ========== add laptop fn keys ==========
+
+# brighness keys
+bindsym XF86MonBrightnessUp exec sudo /home/alex/easy_brightness.sh -inc 30
+bindsym XF86MonBrightnessDown exec sudo /home/alex/easy_brightness.sh -dec 30
+
+## Pulse Audio
+#increase sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume \
+    $(pactl list short sinks | grep RUNNING | awk '{print $1}') +5% 
+#decrease sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume \
+    $(pactl list short sinks | grep RUNNING | awk '{print $1}') -5% 
+#mute sound
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute \
+    $(pactl list short sinks | grep RUNNING | awk '{print $1}') toggle 
