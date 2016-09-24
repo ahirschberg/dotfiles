@@ -156,17 +156,17 @@ bar {
 # tray_output primary
 }
 
-# logs out of session
+# session management binds 
 bindsym $mod+Shift+i exec i3-msg exit
 bindsym $mod+i exec gnome-screensaver-command -l
+bindsym Shift+XF86PowerOff exec shutdown now
+bindsym XF86PowerOff exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true && gnome-screensaver-command -l
+
 # add wifi applet
 exec_always nm-applet
 
 # set destkop background via feh
 exec_always ~/.fehbg
-
-# add suspend bindings
-bindsym $mod+Shift+s exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true 
 
 # fix ugly window themes
 exec /usr/bin/gnome-settings-daemon

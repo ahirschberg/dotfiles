@@ -18,5 +18,5 @@ elif [ $1 == "--num-pre" ]; then
 fi
 
 if [ $bval -gt $bmax ]; then bval=$bmax; fi
-if [ $bval -lt 0 ]; then bval=2; fi
+if [ $bval -lt 0 ]; then bval=6; fi
 echo "$bval" > /sys/class/backlight/intel_backlight/brightness
