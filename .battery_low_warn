@@ -1,4 +1,5 @@
 #!/bin/bash
-if [ $(acpi -b | cut -f 4 -d ' ' | sed 's/..$//') -lt 50 ]; then 
-    DISPLAY=:0.0 /usr/bin/notify-send "Battery Low!!!"
+bat=$(acpi -b | cut -f 4 -d ' ' | sed 's/..$//')
+if [ "$bat" -lt 40 ]; then 
+    DISPLAY=:0.0 /usr/bin/notify-send "Battery Low: $bat%"
 fi
