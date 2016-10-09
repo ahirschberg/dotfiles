@@ -1,8 +1,9 @@
 general {
     colors = true
     interval = 5
-    color_good = "#00FF00"
-    color_bad = "#FF1111"
+    color_good = "#bc595c"
+    color_bad = "#8fd2af"
+    color_degraded = "#d2af8f"
 }
 
 order += "disk /"
@@ -14,12 +15,12 @@ order += "volume master"
 order += "tztime local"
 
 disk "/" {
-    format = "%avail"
+    format = "💿  %avail"
 }
 
 
 cpu_usage {
-    format = "▢ %usage "
+    format = "🔳  %usage"
 }
 
 volume master {
@@ -37,15 +38,15 @@ battery 0 {
     threshold_type = "percentage"
 }
 tztime local {
-    format = " %I:%M ⏱  %h-%d"
+    format = " %h-%d 🗒  %I:%M ⏱ "
 }
 
 ethernet _first_ {
-    format_up =  "Ω: %speed"
-    format_down = "e: ∅"
+    format_up =  "🖧 %speed"
+    format_down = "🖧"
 }
 
 wireless _first_ {
-    format_up = "w: %quality-%essid"
+    format_up = "w: %quality %essid"
     format_down = "w: ∅"
 }

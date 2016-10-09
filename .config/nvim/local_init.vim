@@ -32,8 +32,9 @@ map <F6> :tabe ~/.config/nvim/
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>y "+y
 
-" ,st toggles syntax checking
+" Syntastic syntax checking options
 nnoremap <leader>st :SyntasticToggleMode<CR>
+let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Remap C-L to exit insert mode
 imap <C-L> <Esc>

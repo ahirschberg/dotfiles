@@ -153,7 +153,9 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-# tray_output primary
+        colors {
+            background "#251c45"
+        }
 }
 
 # session management binds 
@@ -172,8 +174,7 @@ exec_always ~/.fehbg
 # fix ugly window themes
 exec /usr/bin/gnome-settings-daemon
 
-# start compton compositor to fix screen tearing
-bindsym $mod+c exec --no-startup-id /home/alex/.toggle_compositing
+bindsym $mod+c exec chromium-browser
 
 # workspace toggle
 workspace_auto_back_and_forth yes
