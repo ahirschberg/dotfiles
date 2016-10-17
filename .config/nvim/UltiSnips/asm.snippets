@@ -1,0 +1,15 @@
+snippet func
+ADD r6, r6, -3      ; make room for bottom of stack frame
+STR r7, r6, 1       ; store return address onto stack
+STR r5, r6, 0       ; store old frame pointer onto stack
+ADD r5, r6, -1      ; set new frame pointer
+
+$0
+
+STR r0, r5, 3       ; return val <- $1
+LDR r7, r5, 2       ; return address
+ADD r6, r5, 0       ; r6 to first local
+LDR r5, r5, 1       ; restore fp
+ADD r6, r6, 3       ; r6 to return val
+RET
+endsnippet
