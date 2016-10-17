@@ -31,8 +31,16 @@ let g:hardtime_ignore_buffer_patterns = ['NERD_tree']
 map <F6> :tabe ~/.config/nvim/
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>y "+y
+map <leader>o 2o<esc>O
+map <leader>O 2O<esc>O
 
-" Syntastic syntax checking options
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsUsePythonVersion = 3
+
+" Syntastic:
+" disable for asm files
+let g:syntastic_mode_map= { "passive_filetypes": ["asm"] }
+" ,st to toggle
 nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 
@@ -44,8 +52,8 @@ autocmd FileType tex call AuTex()
 function! AuTex ()
     inoremap <c-a> \
     nnoremap <F5> :!pdflatex %<CR>
-    imap <c-g>t \begin{tabular}{l\|r}<cr>\end{tabular}<esc>==kA
-    imap <c-g>e \begin{enumerate}<cr>\end{enumerate}<esc>==kA
+    imap <leader>bt \begin{tabular}{l\|r}<cr>\end{tabular}<esc>==kA
+    imap <leader>be \begin{enumerate}<cr>\end{enumerate}<esc>==kA
 endfunction
 
 
