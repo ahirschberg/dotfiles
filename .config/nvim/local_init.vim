@@ -34,8 +34,11 @@ map <leader>y "+y
 map <leader>o 2o<esc>O
 map <leader>O 2O<esc>O
 
+let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnipsListSnippets="<c-b>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Syntastic:
 " disable for asm files
@@ -46,26 +49,3 @@ let g:syntastic_python_python_exec = '/usr/bin/python3'
 
 " Remap C-L to exit insert mode
 imap <C-L> <Esc>
-
-" LaTex
-autocmd FileType tex call AuTex()
-function! AuTex ()
-    inoremap <c-a> \
-    nnoremap <F5> :!pdflatex %<CR>
-    imap <leader>bt \begin{tabular}{l\|r}<cr>\end{tabular}<esc>==kA
-    imap <leader>be \begin{enumerate}<cr>\end{enumerate}<esc>==kA
-endfunction
-
-
-" Java - print and main binds, class boilerplate
-autocmd Filetype java call AuJava()
-function! AuJava ()
-    inoremap <buffer> Sop System.out.print
-    inoremap <buffer> Psvm public static void main(String[] args) {<cr>}<esc>O
-	" TODO not working
-    nnoremap <buffer> <F5> execute '!javac % && java ' . expand("%:t:r")
-endfunction
-
-autocmd BufNewFile *.java
-  \ exe "normal Opublic class " . expand("%:t:r") . " {\n}\<Esc>1G"
-
