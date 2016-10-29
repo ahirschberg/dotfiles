@@ -21,6 +21,8 @@ set colorcolumn=81
 
 " Autocmd for ruby files
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype tex nnoremap <F5> :!pdflatex %<CR>
+autocmd Filetype tex inoremap <c-a> \
 
 set iskeyword+=\-       " set autocomplete to include hyphens
 
@@ -46,6 +48,9 @@ let g:syntastic_mode_map= { "passive_filetypes": ["asm"] }
 " ,st to toggle
 nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_java_javac_config_file_enabled = 1
 
 " Remap C-L to exit insert mode
 imap <C-L> <Esc>
+
+
