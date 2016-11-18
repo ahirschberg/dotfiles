@@ -163,9 +163,10 @@ bar {
 # session management binds 
 bindsym $mod+Shift+i exec i3-msg exit
 bindsym $mod+i exec gnome-screensaver-command -l
+bindsym $mod+Control+Escape exec shutdown now
 bindsym Shift+XF86PowerOff exec shutdown now
 bindsym XF86PowerOff exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true && gnome-screensaver-command -l
-bindsym --release Print exec "scrot -s ~/Downloads/Screenshot%Y-%m-%d%H:%M:%S.png"
+bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d%H:%M:%S.png"
 
 # add wifi applet
 exec_always nm-applet
