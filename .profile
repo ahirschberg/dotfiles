@@ -27,5 +27,4 @@ if [ -d "$HOME/opt/gradle" ]; then
     PATH="$PATH:$GRADLE_HOME/bin"
 fi
 
-setxkbmap -option 'caps:ctrl_modifier'
-xcape -e 'Caps_Lock=Escape'
+source $HOME/.config/caps_esc.sh

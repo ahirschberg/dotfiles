@@ -7,6 +7,10 @@ map gf :e <cfile><CR>
 " Setup colors and theme
 if has("nvim")
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+    " terminal binds
+    tnoremap <esc> <c-\><c-n>
+    nnoremap <leader>tt :exec(':botright vs enew \| call termopen($SHELL) \| startinsert')<cr>
 endif
 
 set bg=dark
@@ -50,6 +54,3 @@ nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_java_javac_config_file_enabled = 1
 
-" terminal binds
-tnoremap <esc> <c-\><c-n>
-nnoremap <leader>tt :exec(':botright vs enew \| call termopen($SHELL) \| startinsert')<cr>
