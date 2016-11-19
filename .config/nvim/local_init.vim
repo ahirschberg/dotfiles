@@ -7,10 +7,13 @@ map gf :e <cfile><CR>
 " Setup colors and theme
 if has("nvim")
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-
     " terminal binds
     tnoremap <esc> <c-\><c-n>
     nnoremap <leader>tt :exec(':botright vs enew \| call termopen($SHELL) \| startinsert')<cr>
+endif
+
+if has("persistent_undo")
+    set undofile
 endif
 
 set bg=dark
