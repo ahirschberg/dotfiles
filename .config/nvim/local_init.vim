@@ -43,7 +43,9 @@ map <leader>y "+y
 map <leader>o 2o<esc>O
 map <leader>O 2O<esc>O
 
-let g:UltiSnipsUsePythonVersion = 3
+if has('python3')
+    let g:UltiSnipsUsePythonVersion = 3
+endif
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-b>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -57,3 +59,7 @@ nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_python_python_exec = '/usr/bin/python3'
 let g:syntastic_java_javac_config_file_enabled = 1
 
+" fix bootstrap binds
+nunmap YY
+nnoremap <leader>p "+gp<CR>
+nunmap XX

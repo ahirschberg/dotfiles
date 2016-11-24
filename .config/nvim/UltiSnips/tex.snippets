@@ -1,0 +1,47 @@
+snippet 2col "tabular latex"
+\begin{tabular}{l|r}
+	$0
+\end{tabular}
+endsnippet
+
+snippet table "Makes a (truth) table" b
+\begin{tabular}{$1}
+	$2
+\end
+endsnippet
+
+snippet sec "section heading"
+\section*{$1}
+$0
+endsnippet
+
+snippet ssec "subsection"
+\subsection*{\#$1}
+$0
+endsnippet
+
+snippet induction "induction proof template"
+\subsubsection*{Base case:}
+$P(1): $0$\\\\
+\begin{tabular}{l|r}
+
+\end{tabular}\\\\
+$\therefore$ Base case is proven.
+
+\subsubsection*{Inductive hypothesis}
+$P(k): $, where $k \in $
+\subsubsection*{Inductive step}
+\begin{tabular}{l|r}
+
+\end{tabular}\\\\
+$\therefore$ Inductive case is proven.
+
+\subsubsection*{Conclusion}
+Since both the base case and inductive step were proven true, then by the principle of mathematical induction, the problem statement must be true.
+endsnippet
+
+snippet enum "enumeration"
+\begin{enumerate}$1
+	\item $0
+\end{enumerate}
+endsnippet
