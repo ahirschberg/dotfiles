@@ -177,7 +177,7 @@ exec_always ~/.fehbg
 # fix ugly window themes
 exec /usr/bin/gnome-settings-daemon
 
-bindsym $mod+c exec chromium-browser
+bindsym $mod+c exec firefox
 
 # workspace toggle
 workspace_auto_back_and_forth yes
@@ -189,8 +189,6 @@ for_window[class="fxapp.MainFXApplication"] floating enable
 # set display modes for dock and undock -- TODO figure out how to automate this
 bindsym $mod+Control+x exec --no-startup-id "bash ~/.screenlayout/desktoplike.sh"
 bindsym $mod+Shift+x exec --no-startup-id "bash ~/.screenlayout/laptop-only.sh"
-
-bindsym $mod+u exec "unity-control-center"
 
 ## ========== add laptop fn keys ==========
 
@@ -208,3 +206,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume \
 #mute sound
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute \
     $(pactl list short sinks | grep RUNNING | awk '{print $1}') toggle; paplay /usr/share/sounds/freedesktop/stereo/message.oga" 
+
+#######################################################################
+#                      deactivate annoying keys                       #
+#######################################################################
+bindsym F1 nop
