@@ -27,5 +27,4 @@ if [ -d "$HOME/opt/gradle" ]; then
     PATH="$PATH:$GRADLE_HOME/bin"
 fi
 
-# remap caps to escape
-xmodmap -e "keycode 66 = Escape"
+xmodmap .xmodmaprc
