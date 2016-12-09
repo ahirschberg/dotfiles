@@ -1,3 +1,4 @@
+set softtabstop=4
 set nobomb
 set nobinary
 

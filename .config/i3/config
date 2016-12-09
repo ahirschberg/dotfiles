@@ -184,7 +184,9 @@ workspace_auto_back_and_forth yes
 
 # always floating
 for_window [window_role="pop-up"] floating enable
-for_window[class="fxapp.MainFXApplication"] floating enable
+for_window [class="fxapp.*"] floating enable
+for_window [class="vbam"] floating enable
+
 
 # set display modes for dock and undock -- TODO figure out how to automate this
 bindsym $mod+Control+x exec --no-startup-id "bash ~/.screenlayout/desktoplike.sh"
