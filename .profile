@@ -26,5 +26,3 @@ if [ -d "$HOME/opt/gradle" ]; then
     export GRADLE_HOME="$HOME/opt/gradle"
     PATH="$PATH:$GRADLE_HOME/bin"
 fi
-
-xmodmap .xmodmaprc
