@@ -1,0 +1,36 @@
+
+set tabnumbers
+
+" hide navbar, alt + x toggles
+set gui=nonavigation
+nnoremap <A-x> :set toolbars=invnavigation<CR>
+
+" Load configuration file into current browser, useful for updating after editing this file.
+command! sourcerc :source ~/.vimperatorrc
+
+" does this do anything?
+set! browser.tabs.autoHide=false
+
+" annoying browser functions
+nnoremap <C-k> <Nop>
+
+" better scrolling
+nnoremap h 10h
+nnoremap j 10j
+nnoremap k 10k
+nnoremap l 10l
+nmap <Space> <C-d>
+nmap <S-Space> <C-u>
+
+" map K and J to next and prev tab
+nmap K :tn<CR>
+nmap J :tp<CR>
+
+" set F mode hints to be keyboard keys
+set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+" delete all on line for some reason order matters...
+inoremap <C-f> <c-k><c-u>
+
+" MODELINE:
+" vim: set ft=vim:
