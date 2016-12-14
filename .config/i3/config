@@ -69,10 +69,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+h split h
 
 # split in vertical orientation
-# bindsym $mod+v split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -154,6 +154,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        position top
         status_command i3status
         colors {
             background "#251c45"
@@ -182,6 +183,9 @@ bindsym $mod+c exec firefox
 # workspace toggle
 workspace_auto_back_and_forth yes
 
+# disable title bars
+new_window pixel
+
 # always floating
 for_window [window_role="pop-up"] floating enable
 for_window [class="fxapp.*"] floating enable
@@ -198,16 +202,10 @@ bindsym $mod+Shift+x exec --no-startup-id "bash ~/.screenlayout/laptop-only.sh"
 bindsym XF86MonBrightnessUp exec sudo /home/alex/easy_brightness.sh -inc 30
 bindsym XF86MonBrightnessDown exec sudo /home/alex/easy_brightness.sh -dec 30
 
-## Pulse Audio
-#increase sound volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume \
-    $(pactl list short sinks | grep RUNNING | awk '{print $1}') +5%; paplay /usr/share/sounds/freedesktop/stereo/message.oga" 
-#decrease sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume \
-    $(pactl list short sinks | grep RUNNING | awk '{print $1}') -5%; paplay /usr/share/sounds/freedesktop/stereo/message.oga" 
-#mute sound
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute \
-    $(pactl list short sinks | grep RUNNING | awk '{print $1}') toggle; paplay /usr/share/sounds/freedesktop/stereo/message.oga" 
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
 
 #######################################################################
 #                      deactivate annoying keys                       #

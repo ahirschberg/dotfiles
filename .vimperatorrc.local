@@ -32,5 +32,7 @@ set hintchars=hjklasdfgyuiopqwertnmzxcvb
 " delete all on line for some reason order matters...
 inoremap <C-f> <c-k><c-u>
 
+set titlestring="ViRefox"
+
 " MODELINE:
 " vim: set ft=vim:
