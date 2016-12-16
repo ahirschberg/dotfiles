@@ -1,9 +1,11 @@
-
 set tabnumbers
+" does this do anything??
+set focuscontent=false
 
-" hide navbar, alt + x toggles
-set gui=nonavigation
-nnoremap <A-x> :set toolbars=invnavigation<CR>
+" gui
+set gui=none
+set status=bookmark,history,input,position,ssl,tabcount
+nnoremap <A-x> :set toolbars=invnavigation,invtabs<CR>
 
 " Load configuration file into current browser, useful for updating after editing this file.
 command! sourcerc :source ~/.vimperatorrc

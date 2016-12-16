@@ -6,12 +6,12 @@ general {
     color_degraded = "#d2af8f"
 }
 
-order += "disk /"
 order += "ethernet _first_"
 order += "wireless _first_"
+order += "volume master"
+order += "disk /"
 order += "cpu_usage"
 order += "battery 0"
-order += "volume master"
 order += "tztime local"
 
 disk "/" {
@@ -37,15 +37,15 @@ battery 0 {
     threshold_type = "percentage"
 }
 tztime local {
-    format = " %h-%d 🗒  %I:%M ⏱ "
+    format = " %h-%d ~ %I:%M  "
 }
 
 ethernet _first_ {
     format_up =  "🖧 %speed"
-    format_down = "🖧"
+    format_down = "✘ 🖧 "
 }
 
 wireless _first_ {
     format_up = "w: %quality %essid"
-    format_down = "w: ∅"
+    format_down = "w: ✘"
 }

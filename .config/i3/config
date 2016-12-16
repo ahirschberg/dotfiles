@@ -38,7 +38,7 @@ bindsym $mod+q kill
 bindsym --whole-window $mod+button2 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -nb "#251c45" -sb "#D84315" -nf "#9E9D24" -sf "#FFCCBC" -p '>'
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -158,6 +158,7 @@ bar {
         status_command i3status
         colors {
             background "#251c45"
+# focused_workspace "#00FF00" "#FF0000" "#0000FF"
         }
 }
 
@@ -184,13 +185,13 @@ bindsym $mod+c exec firefox
 workspace_auto_back_and_forth yes
 
 # disable title bars
-new_window pixel
+new_window pixel 5 
+hide_edge_borders smart
 
 # always floating
 for_window [window_role="pop-up"] floating enable
 for_window [class="fxapp.*"] floating enable
 for_window [class="vbam"] floating enable
-
 
 # set display modes for dock and undock -- TODO figure out how to automate this
 bindsym $mod+Control+x exec --no-startup-id "bash ~/.screenlayout/desktoplike.sh"

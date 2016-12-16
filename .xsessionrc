@@ -1,3 +1,5 @@
 #!/bin/sh
 xmodmap .xmodmaprc
-# xrdb /home/alex/.Xresources
+
+# hide mouse cursor after some time
+unclutter &
