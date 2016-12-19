@@ -42,7 +42,7 @@ tztime local {
 
 ethernet _first_ {
     format_up =  "🖧 %speed"
-    format_down = "✘ 🖧 "
+    format_down = "🖧  ✘"
 }
 
 wireless _first_ {

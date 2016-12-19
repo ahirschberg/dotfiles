@@ -1,6 +1,7 @@
 set tabnumbers
+set showstatuslinks=2
 " does this do anything??
-set focuscontent=false
+set nofocuscontent
 
 " gui
 set gui=none
@@ -35,6 +36,5 @@ set hintchars=hjklasdfgyuiopqwertnmzxcvb
 inoremap <C-f> <c-k><c-u>
 
 set titlestring="ViRefox"
-
 " MODELINE:
 " vim: set ft=vim:
