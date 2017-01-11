@@ -4,9 +4,10 @@ set showstatuslinks=2
 set nofocuscontent
 
 " gui
-set gui=none
+set gui=none,tabs
 set status=bookmark,history,input,position,ssl,tabcount
-nnoremap <A-x> :set toolbars=invnavigation,invtabs<CR>
+nnoremap <A-x> :set gui=invnavigation,invtabs<CR>
+nnoremap <A-c> :set gui=invnavigation<CR>
 
 " Load configuration file into current browser, useful for updating after editing this file.
 command! sourcerc :source ~/.vimperatorrc
