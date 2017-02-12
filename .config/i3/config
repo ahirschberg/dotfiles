@@ -78,15 +78,9 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+Shift+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -188,10 +182,20 @@ workspace_auto_back_and_forth yes
 new_window pixel 5 
 hide_edge_borders smart
 
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space "mark --add _t; [con_mark=_f] floating disable, border pixel 5, mark --add --toggle _t; [con_mark=_t] floating enable, border normal 0; mark --add --toggle _f;"
+
 # always floating
 for_window [window_role="pop-up"] floating enable
 for_window [class="fxapp.*"] floating enable
 for_window [class="vbam"] floating enable
+for_window [class="gajim"] mark "chat", move scratchpad
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # set display modes for dock and undock -- TODO figure out how to automate this
 bindsym $mod+Control+x exec --no-startup-id "bash ~/.screenlayout/desktoplike.sh"
