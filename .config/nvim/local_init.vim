@@ -1,6 +1,7 @@
 set softtabstop=4
 set nobomb
 set nobinary
+set mouse=nvc " set vim to capture mouse in normal, visual, and command mode
 
 " gf always opens file, even if it does not exist
 map gf :e <cfile><CR>
