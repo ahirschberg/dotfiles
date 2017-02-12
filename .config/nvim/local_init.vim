@@ -59,8 +59,3 @@ let g:syntastic_java_javac_config_file_enabled = 1
 
 " help window in vertical split: when help opened, moves to a vert
 autocmd FileType help wincmd L
-
-" remove some vim-bootstrap binds
-nunmap YY
-nnoremap <leader>p "+p<CR>
-nunmap XX
