@@ -38,6 +38,7 @@ autocmd Filetype html,erb,javascript,css,scss setlocal iskeyword+=\-
 
 map <F6> :tabe ~/.config/nvim/
 map <leader>y "+y
+map <leader>p "+p
 " map <leader>o 2o<esc>O
 " map <leader>O 2O<esc>O
 

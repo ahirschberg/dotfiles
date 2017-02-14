@@ -15,11 +15,11 @@ order += "battery 0"
 order += "tztime local"
 
 disk "/" {
-    format = "💿  %avail"
+    format = "  %avail"
 }
 
 cpu_usage {
-    format = "🔳  %usage"
+    format = "  %usage"
 }
 
 volume master {
@@ -31,21 +31,21 @@ volume master {
 
 battery 0 {
     format = "%status %percentage %remaining %emptytime"
-    status_chr = "⌁"
-    status_bat = "○"
+    status_chr = " "
+    status_bat = " "
     low_threshold = 30
     threshold_type = "percentage"
 }
 tztime local {
-    format = " %h-%d ~ %I:%M  "
+    format = " %h-%d   %I:%M  "
 }
 
 ethernet _first_ {
-    format_up =  "🖧 %speed"
-    format_down = "🖧  ✘"
+    format_up =  " %speed"
+    format_down = "  ✘"
 }
 
 wireless _first_ {
-    format_up = "w: %quality %essid"
-    format_down = "w: ✘"
+    format_up = " %quality %essid"
+    format_down = "✘"
 }
