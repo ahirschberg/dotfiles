@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# Script to warn user via desktop popups when the battery is below a
+# certain percentage when discharging, or above a certain percentage
+# when charging
+
 battery_percent=$(acpi -b | cut -f 4 -d ' ' | sed 's/..$//')
 [[ $(acpi -b | cut -f 3 -d ' ') = "Charging," ]]; is_discharging=$?
 if [[ $battery_percent -lt 40 && $is_discharging = 1 ]]; then 
