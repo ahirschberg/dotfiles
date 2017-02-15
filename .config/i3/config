@@ -186,13 +186,14 @@ hide_edge_borders smart
 bindsym $mod+space focus mode_toggle
 
 # toggle tiling / floating
-bindsym $mod+Shift+space "mark --add _t; [con_mark=_f] floating disable, border pixel 5, mark --add --toggle _t; [con_mark=_t] floating enable, border normal 0; mark --add --toggle _f;"
+bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space "mark --add _t; [con_mark=_f] floating disable, border pixel 5, mark --add --toggle _t; [con_mark=_t] floating enable, border normal 0; mark --add --toggle _f;"
 
 # always floating
 for_window [window_role="pop-up"] floating enable
 for_window [class="fxapp.*"] floating enable
 for_window [class="vbam"] floating enable
-for_window [class="gajim"] mark "chat", move scratchpad
+# for_window [class="gajim"] mark "chat", move scratchpad
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -204,15 +205,10 @@ bindsym $mod+Shift+x exec --no-startup-id "bash ~/.screenlayout/laptop-only.sh"
 ## ========== add laptop fn keys ==========
 
 # brighness keys
-bindsym XF86MonBrightnessUp exec sudo /home/alex/easy_brightness.sh -inc 30
-bindsym XF86MonBrightnessDown exec sudo /home/alex/easy_brightness.sh -dec 30
+bindsym XF86MonBrightnessUp exec sudo -H ~/.scripts/brightness_ctl.sh -inc 30
+bindsym XF86MonBrightnessDown exec sudo -H ~/.scripts/brightness_ctl.sh -dec 30
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
-
-#######################################################################
-#                      deactivate annoying keys                       #
-#######################################################################
-bindsym F1 nop

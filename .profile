@@ -14,6 +14,16 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
 	. "$HOME/.bashrc"
     fi
+
+    # look for a scripts directory and source all .sh files prefixed with an underscore
+    if [ -d ~/.scripts ]; then
+        for sh_to_source in ~/.scripts/_*.sh; do
+            . "$sh_to_source"
+        done
+    else
+        # set prompt string to indicate scripts load failure
+        PS1="[ns] $PS1"
+    fi
 fi
 
 # set PATH so it includes user's private bin if it exists
