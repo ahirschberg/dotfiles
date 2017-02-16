@@ -1,7 +1,6 @@
 #!/bin/sh
+
+# file executed when the X session starts up. 
+# TODO find a better place for this
+
 xmodmap .xmodmaprc
-if [ -f ~/Downloads/xflux ]; then
-    ~/Downloads/xflux -z 10022
-fi
-# hide mouse cursor after some time
-unclutter &
