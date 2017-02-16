@@ -4,6 +4,10 @@
 shopt -s globstar
 shopt -s histverify
 
+export HISTFILESIZE=
+export HISTSIZE=10000
+
+
 function set_pcolor() {
     if [ $? == 0 ]; then
         echo $PGOOD

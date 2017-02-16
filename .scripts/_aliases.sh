@@ -11,7 +11,7 @@ fi
 alias g="git status"
 
 # dotfiles git
-alias gdotfilescfg='/usr/bin/git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
+alias gdf='/usr/bin/git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
 
 # is there no better way?
 GATECH_CS="$HOME/projects/gatech-cs"
