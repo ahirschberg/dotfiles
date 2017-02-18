@@ -7,6 +7,8 @@ shopt -s histverify
 export HISTFILESIZE=
 export HISTSIZE=10000
 
+export EDITOR=`which nvim`
+
 function set_pcolor() {
     if [ $? == 0 ]; then
         echo $PGOOD
@@ -39,5 +41,5 @@ PBAD="$(tput setaf 167)"
 PBACK="$RESET\[$(tput setab 238)\]"
 CF1="$RESET\[$(tput setaf 237)$(tput setab 236)\]"
 CF2="$RESET\[$(tput setaf 235)$(tput setab 234)\]"
-export PS1="$PBACK\[\$(set_pcolor)\]⋑$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET"
+export PS1="$PBACK\[\$(set_pcolor)\]$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET"
 PROMPT_DIRTRIM=2

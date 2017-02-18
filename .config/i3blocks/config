@@ -86,8 +86,8 @@ separator=false
 separator_block_width=15
 
 [bandwidth]
-instance=eth0
-interval=5
+# instance=eth0
+interval=10
 
 # CPU usage
 #

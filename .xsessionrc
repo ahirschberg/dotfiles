@@ -1,6 +1,0 @@
-#!/bin/sh
-
-# file executed when the X session starts up. 
-# TODO find a better place for this
-
-xmodmap .xmodmaprc

@@ -1,7 +1,10 @@
 set softtabstop=4
-set nobomb
-set nobinary
 set mouse=nvc " set vim to capture mouse in normal, visual, and command mode
+
+" enable powerline symbols for a patched powerline font
+" if you don't have a powerline font, you will see weird symbols unless this
+" is set to 0
+let g:airline_powerline_fonts = 1
 
 " gf always opens file, even if it does not exist
 map gf :e <cfile><CR>

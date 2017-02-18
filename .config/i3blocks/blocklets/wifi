@@ -31,8 +31,13 @@ QUALITY=$(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 70) }
 
 #------------------------------------------------------------------------
 
-echo $QUALITY% # full text
-echo $QUALITY% # short text
+SSID=$(iwgetid -r)
+SSID=${SSID:0:4} # truncate SSID
+
+output="$QUALITY% $SSID"
+
+echo $output # full text
+echo $output # short text
 
 # color
 if [[ $QUALITY -ge 80 ]]; then

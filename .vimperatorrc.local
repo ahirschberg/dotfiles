@@ -1,4 +1,3 @@
-set tabnumbers
 set showstatuslinks=2
 " does this do anything??
 set nofocuscontent
@@ -25,6 +24,15 @@ nnoremap k 10k
 nnoremap l 10l
 nmap <Space> <C-d>
 nmap <S-Space> <C-u>
+
+" make scrolling not a key chord
+nnoremap u <C-u>
+nnoremap d <C-d>
+nnoremap <C-u> u
+nnoremap <C-d> d
+
+" set C-o to navigate even in insert mode
+inoremap <C-o> <esc><C-o>
 
 " map K and J to next and prev tab
 nmap K :tn<CR>
