@@ -149,7 +149,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        status_command i3status
+        status_command SCRIPT_DIR=~/.config/i3blocks/blocklets i3blocks
         colors {
             background "#251c45"
 # focused_workspace "#00FF00" "#FF0000" "#0000FF"
@@ -209,6 +209,13 @@ bindsym XF86MonBrightnessUp exec sudo -H ~/.scripts/brightness_ctl.sh -inc 30
 bindsym XF86MonBrightnessDown exec sudo -H ~/.scripts/brightness_ctl.sh -dec 30
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle # mute sound
+
+#increase sound volume
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && \
+    pkill -RTMIN+10 i3blocks
+
+#decrease sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% && \
+    pkill -RTMIN+10 i3blocks
+## mute sound
+bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+10 i3blocks
