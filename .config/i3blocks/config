@@ -27,21 +27,20 @@
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
 command=$SCRIPT_DIR/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=30
 markup=none
 
 # Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
 [volume]
-label=VOL
-#label=♪
+label=♪
 # instance=Master
 instance=pulse
 interval=once
 signal=10
+
+[pkg_upgrades]
+label=PKG
+interval=600
 
 # Memory usage
 #
@@ -50,12 +49,14 @@ signal=10
 label=MEM
 separator=false
 interval=30
+separator_block_width=15
 
 [memory]
 label=SWAP
 instance=swap
 separator=false
 interval=30
+separator_block_width=15
 
 # Disk usage
 #
@@ -82,6 +83,7 @@ instance=wlo1
 label=
 interval=10
 separator=false
+separator_block_width=15
 
 [bandwidth]
 instance=eth0
@@ -92,9 +94,9 @@ interval=5
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-label=CPU
+label=
 interval=10
-min_width=CPU: 100.00%
+min_width=100%
 #separator=false
 
 #[load_average]
@@ -105,12 +107,11 @@ min_width=CPU: 100.00%
 # The battery instance defaults to 0.
 [battery]
 label=BAT
-#label=⚡
 #instance=1
-interval=30
+interval=10
 
 # Date Time
 #
 [time]
-command=date '+%Y-%m-%d %H:%M:%S'
+command=date '+%h-%d %H:%M:%S'
 interval=5
