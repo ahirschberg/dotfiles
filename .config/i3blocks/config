@@ -33,7 +33,6 @@ markup=none
 # Volume indicator
 [volume]
 label=♪
-# instance=Master
 instance=pulse
 interval=once
 signal=10
@@ -106,7 +105,7 @@ min_width=100%
 #
 # The battery instance defaults to 0.
 [battery]
-label=BAT
+label=
 #instance=1
 interval=10
 
@@ -114,4 +113,4 @@ interval=10
 #
 [time]
 command=date '+%h-%d %H:%M:%S'
-interval=5
+interval=1

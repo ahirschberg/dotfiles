@@ -24,6 +24,7 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
 fi
 
 alias uapt="sudo apt update && sudo apt upgrade"
+alias lapt="apt list --upgradable"
 
 ext() {
     $@ 2> /dev/null &

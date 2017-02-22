@@ -22,6 +22,7 @@ my $percent;
 my $full_text;
 my $short_text;
 my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+my $battery_glyph;
 
 # read the first line of the "acpi" command output
 open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
@@ -35,12 +36,24 @@ if ($acpi !~ /: (\w+), (\d+)%/) {
 
 $status = $1;
 $percent = $2;
-$full_text = "$percent%";
+
+$battery_glyph = "";
+if ($percent < 25) {
+    $battery_glyph = "";
+} elsif ($percent < 40) {
+    $battery_glyph = "";
+} elsif ($percent < 60) {
+    $battery_glyph = "";
+} elsif ($percent < 85) {
+    $battery_glyph = "";
+}
+
+$full_text = "${battery_glyph}  $percent%";
 
 if ($status eq 'Discharging') {
-	$full_text = " $full_text";
+	$full_text = "$full_text";
 } elsif ($status eq 'Charging') {
-	$full_text = " $full_text";
+	$full_text = "  $full_text";
 }
 
 $short_text = $full_text;
@@ -54,7 +67,9 @@ print "$full_text\n";
 print "$short_text\n";
 
 # consider color and urgent flag only on discharge
-if ($status eq 'Discharging') {
+if ($status eq 'Charging') {
+    # print "#00FF00"
+} elsif ($status eq 'Discharging') {
 
 	if ($percent < 20) {
 		print "#FF0000\n";

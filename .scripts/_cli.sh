@@ -6,6 +6,9 @@ shopt -s histverify
 
 export HISTFILESIZE=
 export HISTSIZE=10000
+# fix other programs truncating the .bash_history file
+# via http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+export HISTFILE=~/.my_bash_history
 
 export EDITOR=`which nvim`
 
@@ -39,7 +42,7 @@ RESET="\[$(tput sgr0)\]"
 PGOOD="$(tput setaf 119)"
 PBAD="$(tput setaf 167)"
 PBACK="$RESET\[$(tput setab 238)\]"
-CF1="$RESET\[$(tput setaf 237)$(tput setab 236)\]"
-CF2="$RESET\[$(tput setaf 235)$(tput setab 234)\]"
-export PS1="$PBACK\[\$(set_pcolor)\]$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET"
+CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
+CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
+export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET"
 PROMPT_DIRTRIM=2

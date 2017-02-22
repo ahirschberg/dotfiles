@@ -63,3 +63,6 @@ let g:syntastic_java_javac_config_file_enabled = 1
 
 " help window in vertical split: when help opened, moves to a vert
 autocmd FileType help wincmd L
+
+" YankRing history location
+let g:yankring_history_dir="$HOME/.config/nvim/"
