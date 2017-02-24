@@ -107,10 +107,10 @@ min_width=100%
 [battery]
 label=
 #instance=1
-interval=10
+interval=15
 
 # Date Time
 #
 [time]
 command=date '+%h-%d %H:%M:%S'
-interval=1
+interval=10

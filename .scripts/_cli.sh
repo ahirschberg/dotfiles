@@ -44,5 +44,5 @@ PBAD="$(tput setaf 167)"
 PBACK="$RESET\[$(tput setab 238)\]"
 CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
 CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
-export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET"
+export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
 PROMPT_DIRTRIM=2
