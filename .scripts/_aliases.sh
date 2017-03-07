@@ -8,7 +8,7 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 
 # Git aliases
-alias g="git status"
+alias g="git status $@"
 
 # dotfiles git
 alias gdf='/usr/bin/git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
