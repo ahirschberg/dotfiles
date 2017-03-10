@@ -30,10 +30,17 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=30
 markup=none
 
-# Volume indicator
+# Volume indicator, using SIG10 for updates
 [volume]
 label=♪
 instance=pulse
+interval=once
+signal=10
+
+# Brightness indicator, using SIG10 for updates
+[brightness]
+label=
+instance=intel_backlight
 interval=once
 signal=10
 

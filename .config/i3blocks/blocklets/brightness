@@ -1,0 +1,11 @@
+#!/bin/bash
+
+brightness_loc="/sys/class/backlight/$BLOCK_INSTANCE"
+
+[[ ! -f "$brightness_loc/brightness" ]] && exit 1
+brightness=$(cat $brightness_loc/brightness)
+max_brightness=$(cat $brightness_loc/max_brightness)
+percent=$(awk "BEGIN {pc=100*${brightness}/${max_brightness}; print int(pc)}")
+
+echo "$percent%"
+echo "$percent%"

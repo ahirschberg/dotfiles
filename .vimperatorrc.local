@@ -40,9 +40,16 @@ nmap J :tp<CR>
 
 " set F mode hints to be keyboard keys
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
-
 " delete all on line for some reason order matters...
-inoremap <C-f> <c-k><c-u>
+" inoremap <C-f> <c-k><c-u>
+" iunmap <c-k>
+inoremap <c-k>ss ß
+inoremap <c-k>a: ä
+inoremap <c-k>A: Ä
+inoremap <c-k>o: ö
+inoremap <c-k>O: Ö
+inoremap <c-k>u: ü
+inoremap <c-k>U: Ü
 
 set titlestring="ViRefox"
 " MODELINE:

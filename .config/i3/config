@@ -204,13 +204,15 @@ bindsym $mod+Shift+x exec --no-startup-id "bash ~/.screenlayout/laptop-only.sh"
 
 ## ========== add laptop fn keys ==========
 
-# brighness keys
-bindsym XF86MonBrightnessUp exec sudo -H ~/.scripts/brightness_ctl.sh -inc 30
-bindsym XF86MonBrightnessDown exec sudo -H ~/.scripts/brightness_ctl.sh -dec 30
+# change brightness and send update signal to i3blocks
+bindsym XF86MonBrightnessUp exec sudo -H ~/.scripts/brightness_ctl.sh -inc 30 \
+    && pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessDown exec sudo -H ~/.scripts/brightness_ctl.sh -dec 30 \
+    && pkill -RTMIN+10 i3blocks
 
 # Pulse Audio controls
 
-#increase sound volume
+#increase sound volume and send update signal to i3blocks
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 1 +5% && \
     pkill -RTMIN+10 i3blocks
 
