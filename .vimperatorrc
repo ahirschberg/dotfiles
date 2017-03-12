@@ -52,5 +52,5 @@ inoremap <c-k>u: ü
 inoremap <c-k>U: Ü
 
 set titlestring="ViRefox"
-" MODELINE:
+" MODELINE: (just use ft=vim because it's good enough)
 " vim: set ft=vim:

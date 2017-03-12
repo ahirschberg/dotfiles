@@ -1,37 +1,34 @@
-"*****************************************************************************
-"" NeoBundle core
-"*****************************************************************************
-if has('vim_starting')
-  set nocompatible               " Be iMproved
+" This file is based off of vim-bootstrap
 
-  " Required:
-  set runtimepath+=~/.config/nvim/bundle/neobundle.vim/
+let g:editor_config_dir=$HOME.'/.config/nvim'
+let g:editor_data_dir=  $HOME.'/.local/share/nvim'
+
+if has('vim_starting')
+  set nocompatible               " Be iMproved (NOP in nvim)
+
+  " add neobundle to runtime path
+  exec 'set runtimepath+='.g:editor_config_dir.'/bundle/neobundle.vim/'
 endif
 
-let neobundle_readme=expand('~/.config/nvim/bundle/neobundle.vim/README.md')
-
-let g:vim_bootstrap_langs = ""
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
+let neobundle_readme=g:editor_config_dir.'/bundle/neobundle.vim/README.md'
 
 if !filereadable(neobundle_readme)
   echo "Installing NeoBundle..."
   echo ""
-  silent !mkdir -p ~/.config/nvim/bundle
-  silent !git clone https://github.com/Shougo/neobundle.vim ~/.config/nvim/bundle/neobundle.vim/
+  exec mkdir(g:editor_config_dir.'bundle', 'p')
+  exec "silent !git clone https://github.com/Shougo/neobundle.vim " . g:editor_config_dir."/bundle/neobundle.vim/"
   let g:not_finsh_neobundle = "yes"
-
-  " Run shell script if exist on custom select language
 endif
 
 " Required:
-call neobundle#begin(expand('~/.config/nvim/bundle/'))
+call neobundle#begin(g:editor_config_dir.'/bundle/')
 
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 "*****************************************************************************
-"" NeoBundle install packages
+"" NeoBundle install essential packages
 "*****************************************************************************
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'tpope/vim-fugitive'
@@ -41,9 +38,7 @@ NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'sheerun/vim-polyglot'
 NeoBundle 'vim-scripts/grep.vim'
-NeoBundle 'vim-scripts/CSApprox'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle "Yggdroot/indentLine"
 NeoBundle 'Shougo/vimproc.vim', {
@@ -59,10 +54,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
-if v:version >= 703
-  NeoBundle 'Shougo/vimshell.vim'
-endif
-
 if v:version >= 704
   "" Snippets
   NeoBundle 'SirVer/ultisnips'
@@ -72,7 +63,7 @@ endif
 NeoBundle 'honza/vim-snippets'
 
 "" Custom bundles
-"" Include user's extra bundle
+"" Include user's extra bundles
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
   source ~/.config/nvim/local_bundles.vim
 endif
@@ -103,9 +94,6 @@ set softtabstop=0
 set shiftwidth=4
 set expandtab
 
-"" Map leader to ,
-let mapleader=','
-
 "" Enable hidden buffers
 set hidden
 
@@ -119,16 +107,25 @@ set smartcase
 set nobomb
 set nobinary
 
-"" Directories for swp files
-set nobackup
-set noswapfile
+" Persistence: 
+if has("persistent_undo")
+    set undofile
+    " explicitly set undodir if not set already (nvim sets it by default, vim does not), and have it emulate neovim
+    let &undodir = g:editor_data_dir."/undo"
+endif
+
+" swapfiles don't clutter the working tree
+set swapfile
+let &directory = g:editor_data_dir."/swap"
+" YankRing history location (so that it's not in the home folder)
+let g:yankring_history_dir="$HOME/.local/share/nvim/"
 
 set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/bash
 
 " session management
-let g:session_directory = "~/.config/nvim/session"
+let g:session_directory = g:editor_data_dir."/session"
 let g:session_autoload = "no"
 let g:session_autosave = "no"
 let g:session_command_aliases = 1
@@ -212,15 +209,8 @@ let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
 
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
-" terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
+if has('nvim')
   nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
 endif
 
 "*****************************************************************************
@@ -377,15 +367,12 @@ noremap <C-h> <C-w>h
 vmap < <gv
 vmap > >gv
 
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
-
 "" Open current line on GitHub
 noremap ,o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
 
 "" Custom configs
 "" Include user's local vim config
-if filereadable(expand("~/.config/nvim/local_init.vim"))
-  source ~/.config/nvim/local_init.vim
-endif
+let user_cfg_dir = g:editor_config_dir."/local_init.vim"
+if filereadable(user_cfg_dir)
+  exec "source " . user_cfg_dir
+endi

@@ -1,3 +1,4 @@
+
 set softtabstop=4
 set mouse=nvc " set vim to capture mouse in normal, visual, and command mode
 
@@ -17,34 +18,34 @@ if has("nvim")
     nnoremap <leader>tt :exec(':botright vs enew \| call termopen($SHELL) \| startinsert')<cr>
 endif
 
-if has("persistent_undo")
-    set undofile
-endif
-
+" Colorscheme:
 set bg=dark
 colorscheme gruvbox
 let g:airline_theme='gruvbox'
 
-" setup editor guides
+" Editor:
 set cursorline
 set number
 set relativenumber
 set colorcolumn=81
 
+" Filetypes tweaks:
 nnoremap <F5> :make<CR>
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :!pdflatex %<CR>
 autocmd Filetype tex inoremap <c-a> \
 
-" set autocomplete to include hyphens
+" Editor meta:
+" set autocomplete to include hyphens for certain filetypes
 autocmd Filetype html,erb,javascript,css,scss setlocal iskeyword+=\-
-
+" help window in vertical split: when help opened, moves to a vert
+autocmd FileType help wincmd L
 map <F6> :tabe ~/.config/nvim/
-map <leader>y "+y
-map <leader>p "+p
-" map <leader>o 2o<esc>O
-" map <leader>O 2O<esc>O
+" map <leader>y "+y
+" map <leader>p "+p
 
+" Plugins:
+" TODO move plugin cfg to local_bundles or update structure
 if has('python3')
     let g:UltiSnipsUsePythonVersion = 3
 endif
@@ -54,15 +55,8 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Syntastic:
-" disable for asm files
+" disable for asm files since there are many different types
 let g:syntastic_mode_map= { "passive_filetypes": ["asm"] }
-" ,st to toggle
+" leader+st to toggle
 nnoremap <leader>st :SyntasticToggleMode<CR>
-let g:syntastic_python_python_exec = 'python'
 let g:syntastic_java_javac_config_file_enabled = 1
-
-" help window in vertical split: when help opened, moves to a vert
-autocmd FileType help wincmd L
-
-" YankRing history location
-let g:yankring_history_dir="$HOME/.config/nvim/"

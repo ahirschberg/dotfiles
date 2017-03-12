@@ -167,8 +167,9 @@ bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d
 # add wifi applet
 exec_always nm-applet
 
-# set destkop background via feh
+# set desktop background via feh
 exec_always ~/.fehbg
+exec --no-startup-id xmodmap ~/.Xmodmap
 
 # fix ugly window themes
 exec /usr/bin/gnome-settings-daemon
