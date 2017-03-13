@@ -36,13 +36,17 @@ function show_termcolors() {
     echo
 }
 
-BOLD="\[$(tput bold)\]"
-DIM="\[$(tput dim)\]"
-RESET="\[$(tput sgr0)\]"
-PGOOD="$(tput setaf 119)"
-PBAD="$(tput setaf 167)"
-PBACK="$RESET\[$(tput setab 238)\]"
-CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
-CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
-export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
+if [[ $(tput colors) -gt 8 ]]; then
+
+    BOLD="\[$(tput bold)\]"
+    DIM="\[$(tput dim)\]"
+    RESET="\[$(tput sgr0)\]"
+    PGOOD="$(tput setaf 119)"
+    PBAD="$(tput setaf 167)"
+    PBACK="$RESET\[$(tput setab 238)\]"
+    CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
+    CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
+    export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
+fi
+
 PROMPT_DIRTRIM=2
