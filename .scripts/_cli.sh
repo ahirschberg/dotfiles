@@ -1,5 +1,22 @@
 #!/bin/bash
 
+# Bash command line setup
+# Copyright © 2017 Alex Hirschberg
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
 # enable bash ** support and ! history verification
 shopt -s globstar
 shopt -s histverify
@@ -10,7 +27,16 @@ export HISTSIZE=10000
 # via http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
 export HISTFILE=~/.my_bash_history
 
-export EDITOR=`which nvim`
+if [[ ! -z $(which nvim) ]]; then
+    export EDITOR=`which nvim`
+else
+    export EDITOR=`which vim`
+fi
+
+# setup vim gruvbox theme custom colors
+# note that all vim configuration is stored in the nvim directory since they
+# are cross-compatible
+source ~/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh
 
 function set_pcolor() {
     if [ $? == 0 ]; then

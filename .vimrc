@@ -112,11 +112,18 @@ if has("persistent_undo")
     set undofile
     " explicitly set undodir if not set already (nvim sets it by default, vim does not), and have it emulate neovim
     let &undodir = g:editor_data_dir."/undo"
+    if !isdirectory(&undodir)
+        exec mkdir(&undodir, 'p')
+    endif
 endif
 
 " swapfiles don't clutter the working tree
 set swapfile
 let &directory = g:editor_data_dir."/swap"
+if !isdirectory(&directory)
+    exec mkdir(&directory, 'p')
+endif
+
 " YankRing history location (so that it's not in the home folder)
 let g:yankring_history_dir="$HOME/.local/share/nvim/"
 
@@ -136,8 +143,6 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
-
-let no_buffers_menu=1
 
 set mousemodel=popup
 set t_Co=256
