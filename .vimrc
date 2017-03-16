@@ -64,8 +64,9 @@ NeoBundle 'honza/vim-snippets'
 
 "" Custom bundles
 "" Include user's extra bundles
-if filereadable(expand("~/.config/nvim/local_bundles.vim"))
-  source ~/.config/nvim/local_bundles.vim
+let custom_bundles = g:editor_config_dir."/local_bundles.vim"
+if filereadable(custom_bundles)
+  exec "source " . custom_bundles
 endif
 
 call neobundle#end()
@@ -107,11 +108,11 @@ set smartcase
 set nobomb
 set nobinary
 
-" Persistence: 
+" Persistence:
 if has("persistent_undo")
     set undofile
-    " explicitly set undodir if not set already (nvim sets it by default, vim does not), and have it emulate neovim
-    let &undodir = g:editor_data_dir."/undo"
+    " make undo not restart-persistent by sticking it in /tmp, since the folder size can get large
+    let &undodir = "/tmp/undo"
     if !isdirectory(&undodir)
         exec mkdir(&undodir, 'p')
     endif

@@ -1,4 +1,5 @@
-!  Swaps caps and escape.
+!  Swap caps and escape.
+!  This script is fully reversible
 remove Lock = Caps_Lock
 keysym Escape = Caps_Lock
 keysym Caps_Lock = Escape

@@ -169,7 +169,7 @@ exec_always nm-applet
 
 # set desktop background via feh
 exec_always ~/.fehbg
-exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id ~/.scripts/caps_esc.sh
 
 # fix ugly window themes
 exec /usr/bin/gnome-settings-daemon
