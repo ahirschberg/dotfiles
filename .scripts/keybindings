@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Apply a mapping from caps lock to escape via xkbmap and xmodmap
 # Copyright © 2017 Alex Hirschberg
@@ -18,11 +18,15 @@
 
 map_file="$HOME/.scripts/xkbmap"
 
-if [ ! -f "$map_file" ]; then
-    echo "no xkbmap file, attempting to create one by compiling from xmodmap"
-    echo "If the caps mapping is already active, this will actually undo it permanently and you will need to delete $map_file and run this script again."
-    xmodmap "$HOME/.scripts/caps_esc.xmodmap"
-    xkbcomp $DISPLAY $map_file
+if [[ "$#" == 0 ]]; then
+    if [ -f "$map_file" ]; then
+        xkbcomp "$map_file" $DISPLAY
+    else
+        echo -e "Usage:\t(map_file present)\t./keybindings"
+        echo -e "Usage:\t\t\t\t./keybindings a.xmodmap [b.xmodmap, ...]"
+    fi
+else
+    xmodmap $@ && \ 
+    xkbcomp $DISPLAY "$map_file" && \
+    echo "successfully created compiled keybindings file at '$map_file'"
 fi
-
-xkbcomp "$map_file" $DISPLAY
