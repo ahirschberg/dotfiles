@@ -1,3 +1,4 @@
+set titlestring="ViRefox"
 set showstatuslinks=2
 " does this do anything??
 set nofocuscontent
@@ -18,18 +19,13 @@ set! browser.tabs.autoHide=false
 nnoremap <C-k> <Nop>
 
 " better scrolling
+" make c-u and c-d scroll half a page. Should default to 0 but it wasn't??
+set scroll=0
+" Note: cannot change spacebar's mapping in firefox
 nnoremap h 10h
 nnoremap j 10j
 nnoremap k 10k
 nnoremap l 10l
-nmap <Space> <C-d>
-nmap <S-Space> <C-u>
-
-" make scrolling not a key chord
-nnoremap u <C-u>
-nnoremap d <C-d>
-nnoremap <C-u> u
-nnoremap <C-d> d
 
 " set C-o to navigate even in insert mode
 inoremap <C-o> <esc><C-o>
@@ -40,9 +36,8 @@ nmap J :tp<CR>
 
 " set F mode hints to be keyboard keys
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
-" delete all on line for some reason order matters...
-" inoremap <C-f> <c-k><c-u>
-" iunmap <c-k>
+
+" Add vimlike digraph support for german
 inoremap <c-k>ss ß
 inoremap <c-k>a: ä
 inoremap <c-k>A: Ä
@@ -50,7 +45,8 @@ inoremap <c-k>o: ö
 inoremap <c-k>O: Ö
 inoremap <c-k>u: ü
 inoremap <c-k>U: Ü
+" delete all on line. (nop because of above digraphs using c-k)
+inoremap <A-d> <c-k><NOP><c-u>
 
-set titlestring="ViRefox"
-" MODELINE: (just use ft=vim because it's good enough)
+" MODELINE ... (just use ft=vim because it's good enough)
 " vim: set ft=vim:

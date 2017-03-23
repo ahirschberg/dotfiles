@@ -40,7 +40,4 @@ fi
 
 alias uapt="sudo apt update && sudo apt upgrade"
 alias lapt="apt list --upgradable"
-
-ext() {
-    $@ 2> /dev/null &
-}
+alias o="gnome-open $@"

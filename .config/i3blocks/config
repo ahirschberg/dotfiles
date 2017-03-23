@@ -103,17 +103,12 @@ interval=10
 label=
 interval=10
 min_width=100%
-#separator=false
-
-#[load_average]
-#interval=10
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [battery]
 label=
-#instance=1
 interval=15
 
 # Date Time

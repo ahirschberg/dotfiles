@@ -70,9 +70,18 @@ if [[ $(tput colors) -gt 8 ]]; then
     PGOOD="$(tput setaf 119)"
     PBAD="$(tput setaf 167)"
     PBACK="$RESET\[$(tput setab 238)\]"
-    CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
-    CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
-    export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
+
+    # NOTE: $HAS_POWERLINE_GLYPHS should be set in a file sourced BEFORE this one.
+    # _.sh files in the .scripts folder are sourced in alphabetical (BASH default)
+    # order in your ~/.init_scripts.sh
+    if [[ ! -v HAS_POWERLINE_GLYPHS ]]; then
+        CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
+        CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
+        export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
+    else
+        CF1="$RESET\[$(tput setaf 238)\]"
+        export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe) ${CF1}$RESET "
+    fi
 fi
 
 PROMPT_DIRTRIM=2
