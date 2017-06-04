@@ -54,7 +54,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-session'
 
-if v:version >= 704
+if v:version >= 704 && has('python')
   "" Snippets
   NeoBundle 'SirVer/ultisnips'
   NeoBundle 'FelikZ/ctrlp-py-matcher'
