@@ -41,3 +41,18 @@ fi
 alias uapt="sudo apt update && sudo apt upgrade"
 alias lapt="apt list --upgradable"
 alias o="gnome-open $@"
+
+function zup() {
+    echo "this doesnt work yet..."
+    folder=$1
+    path_up=$PWD
+    if [ -d "$folder/../__MACOSX" ]; then
+        echo "Removing __MACOSX folder from $folder/.."
+        rm -r "$folder/../__MACOSX"
+    fi
+    rm "$folder/.DS_Store"
+    mv $folder/* $path_up
+    rm -d $folder/
+}
+
+alias ipython2="python `which ipython`"
