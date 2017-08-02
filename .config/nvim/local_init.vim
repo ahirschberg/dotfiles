@@ -1,11 +1,20 @@
 
 set softtabstop=4
-set mouse=nvc " set vim to capture mouse in normal, visual, and command mode
+if has('mouse')
+    " set vim to capture mouse in normal, visual, and command mode
+    set mouse=nvc
+endif
 
 " Colorscheme:
 set bg=dark
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+
+try
+    colorscheme gruvbox
+    let g:airline_theme='gruvbox'
+catch
+    colorscheme koehler
+endtry
+
 
 if exists("$HAS_POWERLINE_GLYPHS")
 " enable powerline symbols for a patched powerline font
