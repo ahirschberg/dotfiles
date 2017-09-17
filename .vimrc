@@ -306,6 +306,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>b :CtrlPBuffer<CR>
 let g:ctrlp_map = '<leader>e'

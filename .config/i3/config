@@ -102,6 +102,7 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -159,12 +160,12 @@ bar {
         }
 }
 
-# session management binds 
+# session management binds
 bindsym $mod+Shift+i exec i3-msg exit
 bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
-bindsym Shift+XF86PowerOff exec shutdown now
-bindsym XF86PowerOff exec dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.Suspend" boolean:true
+bindsym Shift+XF86PowerOff exec "sudo pm-hibernate"
+bindsym XF86PowerOff exec "sudo pm-suspend-hybrid"
 bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d%H:%M:%S.png"
 
 # add wifi applet
@@ -172,10 +173,11 @@ exec_always nm-applet
 
 # set desktop background via feh
 exec_always ~/.fehbg
-exec --no-startup-id ~/.scripts/keybindings
 
-# fix ugly window themes
-exec /usr/bin/gnome-settings-daemon
+# force keybindings to sleep to ensure unity-settings-daemon doesn't undo it
+# updated for Ubuntu 17.04
+exec --no-startup-id unity-settings-daemon
+exec_always --no-startup-id "sleep 1; bash ~/.scripts/keybindings"
 
 bindsym $mod+c exec firefox
 bindsym $mod+Shift+c exec firefox -new-window google.com/calendar

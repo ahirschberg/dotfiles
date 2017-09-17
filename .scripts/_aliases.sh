@@ -38,7 +38,7 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
     source /usr/share/autojump/autojump.sh
 fi
 
-alias uapt="sudo apt update && sudo apt upgrade"
+alias uapt="sudo apt update && sudo apt upgrade -y"
 alias lapt="apt list --upgradable"
 alias o="gnome-open $@"
 

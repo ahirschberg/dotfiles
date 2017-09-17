@@ -1,2 +1,9 @@
 set relativenumber
 set number
+
+" make yank and paste work as you would expect, without requiring "+
+set clipboard+=unnamedplus
+
+" make indent shifts keep the highlight region
+vnoremap < <gv
+vnoremap > >gv
