@@ -165,7 +165,7 @@ bindsym $mod+Shift+i exec i3-msg exit
 bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
 bindsym Shift+XF86PowerOff exec "sudo pm-hibernate"
-bindsym XF86PowerOff exec "sudo pm-suspend-hybrid"
+bindsym XF86PowerOff exec "~/.scripts/powerman"
 bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d%H:%M:%S.png"
 
 # add wifi applet

@@ -56,3 +56,6 @@ function zup() {
 }
 
 alias ipython2="python `which ipython`"
+
+alias mybinds="bind -p | less"
+alias keybindings="~/.scripts/keybindings"

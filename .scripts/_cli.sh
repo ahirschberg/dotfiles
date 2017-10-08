@@ -23,6 +23,7 @@ shopt -s histverify
 
 export HISTFILESIZE=
 export HISTSIZE=10000
+export HISTTIMEFORMAT="%a %D %H:%m "
 # fix other programs truncating the .bash_history file
 # via http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
 export HISTFILE=~/.my_bash_history
