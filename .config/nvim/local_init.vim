@@ -43,7 +43,6 @@ set colorcolumn=81
 nnoremap <F5> :make<CR>
 autocmd Filetype ruby,css,scss,html,typescript setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :!pdflatex %<CR>
-autocmd Filetype tex inoremap <c-a> \
 
 " Editor meta:
 " set autocomplete to include hyphens for certain filetypes
@@ -53,6 +52,7 @@ autocmd FileType help wincmd L
 map <F6> :tabe ~/.config/nvim/
 " map <leader>y "+y
 " map <leader>p "+p
+map <leader>s :w<CR>
 
 " Plugins:
 " TODO move plugin cfg to local_bundles or update structure

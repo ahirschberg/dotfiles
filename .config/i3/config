@@ -179,7 +179,7 @@ exec_always ~/.fehbg
 exec --no-startup-id unity-settings-daemon
 exec_always --no-startup-id "sleep 1; bash ~/.scripts/keybindings"
 
-bindsym $mod+c exec firefox
+bindsym $mod+c exec firefox-trunk
 bindsym $mod+Shift+c exec firefox -new-window google.com/calendar
 
 # workspace toggle

@@ -20,7 +20,10 @@ map_file="$HOME/.scripts/xkbmap"
 
 if [[ "$#" == 0 ]]; then
     if [ -f "$map_file" ]; then
-        xkbcomp "$map_file" $DISPLAY
+        # ===
+        xkbcomp "$map_file" $DISPLAY 2&> /dev/null
+        exit $?
+        # ===
     else
         echo -e "Usage:\t(map_file present)\t./keybindings"
         echo -e "Usage:\t\t\t\t./keybindings a.xmodmap [b.xmodmap, ...]"

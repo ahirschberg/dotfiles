@@ -25,11 +25,15 @@ fi
 # Git aliases
 alias g="git status $@"
 
+alias reload_rc=". $HOME/.init_scripts.sh"
+
 # dotfiles git
 alias gdf='/usr/bin/git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
 
-# is there no better way?
 GATECH_CS="$HOME/projects/gatech-cs"
+function brandonsim() {
+    nohup java -jar $GATECH_CS/resource/Brandonsim-2.7.4.jar $1 > /dev/null &
+}
 
 alias cdd="cd ../.."
 
@@ -38,9 +42,16 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
     source /usr/share/autojump/autojump.sh
 fi
 
-alias uapt="sudo apt update && sudo apt upgrade -y"
-alias lapt="apt list --upgradable"
-alias o="gnome-open $@"
+function pkg-u() {
+    sudo apt update && sudo apt upgrade -y
+
+    # if i3blocks is running, update the pkg notification
+    pgrep -x "i3blocks" > /dev/null && sudo pkill i3blocks -RTMIN+12
+}
+alias pkg-l="apt list --upgradable"
+function o() {
+    xdg-open "$@" >/dev/null &
+}
 
 function zup() {
     echo "this doesnt work yet..."
@@ -59,3 +70,9 @@ alias ipython2="python `which ipython`"
 
 alias mybinds="bind -p | less"
 alias keybindings="~/.scripts/keybindings"
+
+function hgrep() {
+    history | grep $@ | less
+}
+
+alias odh="od -A x -t x1z -v"

@@ -47,6 +47,7 @@ signal=10
 [pkg_upgrades]
 label=PKG
 interval=once
+signal=12
 
 # Memory usage
 #
