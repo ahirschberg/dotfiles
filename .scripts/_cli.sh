@@ -37,10 +37,14 @@ fi
 # setup vim gruvbox theme custom colors
 # note that all vim configuration is stored in the nvim directory since they
 # are cross-compatible
-source ~/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh
+gruvbox_colors="$HOME/.config/nvim/bundle/gruvbox/gruvbox_256palette.sh"
+if [ -f "$gruvbox_colors" ]; then
+    source $gruvbox_colors
+fi
 
 function set_pcolor() {
-    if [ $? == 0 ]; then
+    cached=$?
+    if [ $cached == 0 ]; then
         echo $PGOOD
     else
         echo $PBAD

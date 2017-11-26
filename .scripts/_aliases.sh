@@ -43,7 +43,7 @@ if [ -f /usr/share/autojump/autojump.sh ]; then
 fi
 
 function pkg-u() {
-    sudo apt update && sudo apt upgrade -y
+    sudo apt update; sudo apt upgrade -y
 
     # if i3blocks is running, update the pkg notification
     pgrep -x "i3blocks" > /dev/null && sudo pkill i3blocks -RTMIN+12

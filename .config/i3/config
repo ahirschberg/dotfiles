@@ -177,6 +177,8 @@ exec_always ~/.fehbg
 # force keybindings to sleep to ensure unity-settings-daemon doesn't undo it
 # updated for Ubuntu 17.04
 exec --no-startup-id unity-settings-daemon
+exec --no-startup-id "sleep 1; xautolock -time 1 -locker ~/.scripts/powerman"
+exec --no-startup-id "sleep 1; xset dpms 0 30 30"
 exec_always --no-startup-id "sleep 1; bash ~/.scripts/keybindings"
 
 bindsym $mod+c exec firefox-trunk
