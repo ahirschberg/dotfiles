@@ -121,7 +121,8 @@ bindsym $mod+Control+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power off:' -b 'Sleep (RAM)' 'exec ~/.scripts/powerman suspend' -b 'Sleep (HDD)' 'exec ~/.scripts/powerman hibernate' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'exec reboot' -b 'Shutdown' 'exec sudo shutdown now'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -164,6 +165,7 @@ bar {
 bindsym $mod+Shift+i exec i3-msg exit
 bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
+bindsym $mod+Shift+Escape exec "~/.scripts/powerman suspend"
 bindsym Shift+XF86PowerOff exec "sudo pm-hibernate"
 bindsym XF86PowerOff exec "~/.scripts/powerman"
 bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d%H:%M:%S.png"
@@ -176,7 +178,7 @@ exec_always ~/.fehbg
 
 # force keybindings to sleep to ensure unity-settings-daemon doesn't undo it
 # updated for Ubuntu 17.04
-exec --no-startup-id unity-settings-daemon
+# exec --no-startup-id unity-settings-daemon
 exec --no-startup-id "sudo powertop --auto-tune"
 exec --no-startup-id "sleep 1; xautolock -time 1 -locker \"~/.scripts/powerman autolock\""
 exec --no-startup-id "sleep 1; xset dpms 0 30 30"
@@ -229,3 +231,53 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% && \
     pkill -RTMIN+10 i3blocks
 ## mute sound
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+10 i3blocks
+
+
+bindsym $mod+x [class="Nightly"] focus
+bindsym $mod+t [class="terminal"] focus
+
+mode "mark_window" {
+                bindsym 1 mark "_1" ; mode "default"
+                bindsym 2 mark "_2" ; mode "default"
+                bindsym 3 mark "_3" ; mode "default"
+                bindsym 4 mark "_4" ; mode "default"
+                bindsym 5 mark "_5" ; mode "default"
+                bindsym q mark "_q" ; mode "default"
+                bindsym w mark "_w" ; mode "default"
+                bindsym e mark "_e" ; mode "default"
+                bindsym r mark "_r" ; mode "default"
+                bindsym t mark "_t" ; mode "default"
+    bindsym m exec i3-input -F 'mark %s' -P 'Mark name: ' ; mode "default"
+    bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: ' ; mode "default"
+    bindsym $mod+Shift+m exec i3-input -F 'mark %s' -P 'Mark name: ' ; mode "default"
+
+                bindsym Return mode "default"
+                bindsym Escape mode "default"
+}
+
+mode "go_to_window" {
+
+                bindsym 1 [con_mark="_1"] focus ; mode "default"
+                bindsym 2 [con_mark="_2"] focus ; mode "default"
+                bindsym 3 [con_mark="_3"] focus ; mode "default"
+                bindsym 4 [con_mark="_4"] focus ; mode "default"
+                bindsym 5 [con_mark="_5"] focus ; mode "default"
+                bindsym q [con_mark="_q"] focus ; mode "default"
+                bindsym w [con_mark="_w"] focus ; mode "default"
+                bindsym e [con_mark="_e"] focus ; mode "default"
+                bindsym r [con_mark="_r"] focus ; mode "default"
+                bindsym t [con_mark="_t"] focus ; mode "default"
+                bindsym m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "default"
+                bindsym $mod+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "default"
+                bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "default"
+                bindsym Tab exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "default"
+                bindsym $mod+Tab exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "default"
+
+                bindsym Return mode "default"
+                bindsym Escape mode "default"
+
+}
+
+bindsym $mod+Shift+m mode "go_to_window"
+bindsym $mod+p mode "go_to_window"
+bindsym $mod+m mode "mark_window"

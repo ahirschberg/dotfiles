@@ -52,7 +52,7 @@ autocmd FileType help wincmd L
 map <F6> :tabe ~/.config/nvim/
 " map <leader>y "+y
 " map <leader>p "+p
-map <leader>s :w<CR>
+map <leader>w :w<CR>
 
 " Plugins:
 " TODO move plugin cfg to local_bundles or update structure

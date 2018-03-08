@@ -35,6 +35,8 @@ function brandonsim() {
     nohup java -jar $GATECH_CS/resource/Brandonsim-2.7.4.jar $1 > /dev/null &
 }
 
+alias cks="java -jar $GATECH_CS/ta_1331/resource/checkstyle-6.2.2.jar $@"
+
 alias cdd="cd ../.."
 
 # add autojump commands
