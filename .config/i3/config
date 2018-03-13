@@ -162,8 +162,8 @@ bar {
 }
 
 # session management binds
-bindsym $mod+Shift+i exec i3-msg exit
-bindsym $mod+i exec gnome-screensaver-command -l
+# bindsym $mod+Shift+i exec i3-msg exit
+# bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
 bindsym $mod+Shift+Escape exec "~/.scripts/powerman suspend"
 bindsym Shift+XF86PowerOff exec "sudo pm-hibernate"
@@ -184,8 +184,11 @@ exec --no-startup-id "sleep 1; xautolock -time 1 -locker \"~/.scripts/powerman a
 exec --no-startup-id "sleep 1; xset dpms 0 30 30"
 exec_always --no-startup-id "sleep 1; bash ~/.scripts/keybindings"
 
-bindsym $mod+c exec firefox-trunk
-bindsym $mod+Shift+c exec firefox -new-window google.com/calendar
+bindsym $mod+Shift+c exec firefox-trunk
+bindsym $mod+c [class="Nightly"] focus
+bindsym $mod+t [class="terminal"] focus
+
+bindsym $mod+Shift+o exec "~/.scripts/ovpn_toggle.sh"
 
 # workspace toggle
 workspace_auto_back_and_forth yes
@@ -233,8 +236,6 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 1 -5% && \
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle && pkill -RTMIN+10 i3blocks
 
 
-bindsym $mod+x [class="Nightly"] focus
-bindsym $mod+t [class="terminal"] focus
 
 mode "mark_window" {
                 bindsym 1 mark "_1" ; mode "default"
