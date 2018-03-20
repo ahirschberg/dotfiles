@@ -188,7 +188,7 @@ bindsym $mod+Shift+c exec firefox-trunk
 bindsym $mod+c [class="Nightly"] focus
 bindsym $mod+t [class="terminal"] focus
 
-bindsym $mod+Shift+o exec "~/.scripts/ovpn_toggle.sh"
+bindsym $mod+Shift+o exec "sudo ~/.scripts/ovpn_toggle.sh > /tmp/ovpn_toggle.sh.txt"
 
 # workspace toggle
 workspace_auto_back_and_forth yes

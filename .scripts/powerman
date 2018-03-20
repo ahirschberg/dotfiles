@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+binaries_loc='/usr/sbin'
+
+
+power_hibernate="$binaries_loc/pm-shutdown"
+power_suspend="$binaries_loc/pm-suspend"
+power_shutdown="/sbin/shutdown now"
+cmd_to_run=''
+locktime=120
+
+try_lock_gnome() {
+    if pidof gnome-screensaver >/dev/null; then
+        gnome-screensaver-command -l &
+    fi
+}
+
+do_suspend() {
+    try_lock_gnome
+    sudo $1
+}
+
+
+echo $#
+if [ $# != '0' ]; then
+    case "$1" in
+        hibernate)
+            do_suspend "$power_hibernate"
+            ;;
+        suspend)
+            do_suspend "$power_suspend"
+            try_lock_gnome
+            ;;
+        autolock)
+            monitor_status=$(xset q | grep Monitor | cut -d' ' -f5)
+            if [ "$monitor_status" == "Off" ]; then
+                pretime=$(date +%s)
+                sudo $power_suspend
+
+                curtime=$(date +%s)
+                if [ $(($curtime - $pretime)) -ge $locktime ]; then
+                    try_lock_gnome
+                fi
+            else
+                echo "Not locking; screen not off"
+            fi
+            ;;
+        *)
+            echo "Invalid argument: '$1'"
+            exit 1
+            ;;
+    esac
+else # default command
+    do_suspend "$power_suspend"
+fi
+
+

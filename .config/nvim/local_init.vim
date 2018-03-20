@@ -71,3 +71,4 @@ let g:syntastic_mode_map= { "passive_filetypes": ["asm"] }
 " leader+st to toggle
 nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_java_javac_config_file_enabled = 1
+

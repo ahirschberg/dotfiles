@@ -1,0 +1,8 @@
+#!/bin/bash
+
+drive_path=$0
+drive_name=$(basename $drive_path)
+
+mkdir $drive_mp
+pmount $drive_path
+sudo chown $(whoami) /media/$drive_name -R
