@@ -25,8 +25,6 @@ fi
 # Git aliases
 alias g="git status $@"
 
-alias reload_rc=". $HOME/.init_scripts.sh"
-
 # dotfiles git
 alias gdf='/usr/bin/git --git-dir=$HOME/.cfg.git/ --work-tree=$HOME'
 
@@ -42,6 +40,8 @@ alias cdd="cd ../.."
 # add autojump commands
 if [ -f /usr/share/autojump/autojump.sh ]; then
     source /usr/share/autojump/autojump.sh
+elif [ -f /usr/share/autojump/autojump.bash ]; then
+    source /usr/share/autojump/autojump.bash
 fi
 
 function pkg-f() {
@@ -61,23 +61,14 @@ function o() {
     xdg-open "$@" >/dev/null &
 }
 
-function zup() {
-    echo "this doesnt work yet..."
-    folder=$1
-    path_up=$PWD
-    if [ -d "$folder/../__MACOSX" ]; then
-        echo "Removing __MACOSX folder from $folder/.."
-        rm -r "$folder/../__MACOSX"
-    fi
-    rm "$folder/.DS_Store"
-    mv $folder/* $path_up
-    rm -d $folder/
-}
-
-alias ipython2="python `which ipython`"
+#alias ipython2="python `which ipython`"
 
 alias mybinds="bind -p | less"
 alias keybindings="~/.scripts/keybindings"
+alias l="ls"
+alias la="ls -a"
+alias ll="ls -lh"
+alias lla="ls -lha"
 
 function hgrep() {
     history | grep $@ | less

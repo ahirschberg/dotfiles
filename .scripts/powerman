@@ -3,16 +3,14 @@
 binaries_loc='/usr/sbin'
 
 
-power_hibernate="$binaries_loc/pm-shutdown"
+power_hibernate="$binaries_loc/pm-hibernate"
 power_suspend="$binaries_loc/pm-suspend"
 power_shutdown="/sbin/shutdown now"
 cmd_to_run=''
 locktime=120
 
 try_lock_gnome() {
-    if pidof gnome-screensaver >/dev/null; then
-        gnome-screensaver-command -l &
-    fi
+   nohup i3lock -c 4A4A4A > /dev/null
 }
 
 do_suspend() {

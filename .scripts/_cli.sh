@@ -20,6 +20,7 @@
 # enable bash ** support and ! history verification
 shopt -s globstar
 shopt -s histverify
+shopt -s dotglob
 
 export HISTFILESIZE=
 export HISTSIZE=10000
@@ -90,3 +91,5 @@ if [[ $(tput colors) -gt 8 ]]; then
 fi
 
 PROMPT_DIRTRIM=2
+# add admin binaries, even if we can't run them
+export PATH+=':/sbin/:/usr/sbin/:/usr/local/sbin/'

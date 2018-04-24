@@ -105,8 +105,8 @@ set ignorecase
 set smartcase
 
 "" Encoding
-set nobomb
-set nobinary
+" set nobomb
+" set nobinary
 
 " Persistence:
 if has("persistent_undo")

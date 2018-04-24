@@ -122,7 +122,7 @@ bindsym $mod+Control+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power off:' -b 'Sleep (RAM)' 'exec ~/.scripts/powerman suspend' -b 'Sleep (HDD)' 'exec ~/.scripts/powerman hibernate' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'exec reboot' -b 'Shutdown' 'exec sudo shutdown now'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Power off:' -b 'Sleep (RAM)' 'exec  ~/.scripts/powerman suspend' -b 'Sleep (HDD)' 'exec  ~/.scripts/powerman hibernate' -b 'Exit i3' 'i3-msg exit' -b 'Reboot' 'exec sudo reboot' -b 'Shutdown' 'exec sudo poweroff'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -168,7 +168,7 @@ bindsym $mod+Control+Escape exec shutdown now
 bindsym $mod+Shift+Escape exec "~/.scripts/powerman suspend"
 bindsym Shift+XF86PowerOff exec "sudo pm-hibernate"
 bindsym XF86PowerOff exec "~/.scripts/powerman"
-bindsym --release Print exec "scrot -s ~/Pictures/Screenshots/Screenshot%Y-%m-%d%H:%M:%S.png"
+bindsym --release Print exec "mkdir -p /tmp/Screenshots/ && scrot -s /tmp/Screenshots/%Y-%m-%d%H:%M:%S.png"
 
 # add wifi applet
 exec_always nm-applet
@@ -176,16 +176,12 @@ exec_always nm-applet
 # set desktop background via feh
 exec_always ~/.fehbg
 
-# force keybindings to sleep to ensure unity-settings-daemon doesn't undo it
-# updated for Ubuntu 17.04
-# exec --no-startup-id unity-settings-daemon
 exec --no-startup-id "sudo powertop --auto-tune"
 exec --no-startup-id "sleep 1; xautolock -time 1 -locker \"~/.scripts/powerman autolock\""
 exec --no-startup-id "sleep 1; xset dpms 0 30 30"
-exec_always --no-startup-id "sleep 1; bash ~/.scripts/keybindings"
 
-bindsym $mod+Shift+c exec firefox-trunk
-bindsym $mod+c [class="Nightly"] focus
+bindsym $mod+Shift+c exec firefox
+bindsym $mod+c [class="Firefox"] focus
 bindsym $mod+t [class="terminal"] focus
 
 bindsym $mod+Shift+o exec "sudo ~/.scripts/ovpn_toggle.sh > /tmp/ovpn_toggle.sh.txt"
@@ -218,8 +214,7 @@ bindsym $mod+Shift+x exec --no-startup-id "bash ~/.screenlayout/laptop-only.sh"
 ## ========== add laptop fn keys ==========
 
 # change brightness and send update signal to i3blocks
-bindsym XF86MonBrightnessUp exec sudo -H ~/.scripts/brightness_ctl.sh -inc 30 \
-    && pkill -RTMIN+10 i3blocks
+bindsym XF86MonBrightnessUp exec "sudo -H ~/.scripts/brightness_ctl.sh -inc 30 && pkill -RTMIN+10 i3blocks"
 bindsym XF86MonBrightnessDown exec sudo -H ~/.scripts/brightness_ctl.sh -dec 30 \
     && pkill -RTMIN+10 i3blocks
 
