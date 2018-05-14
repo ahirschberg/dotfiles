@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Bash command line setup
 # Copyright © 2017 Alex Hirschberg
@@ -17,19 +17,25 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
+
 # enable bash ** support and ! history verification
-shopt -s globstar
-shopt -s histverify
-shopt -s dotglob
+if [ "$(shell_type)" = "bash" ]; then
+    shopt -s globstar
+    shopt -s histverify
+    shopt -s dotglob
+    export HISTFILESIZE=
+    export HISTSIZE=10000
+    export HISTTIMEFORMAT="%a %D %H:%m "
+    # fix other programs truncating the .bash_history file
+    # via http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
+    export HISTFILE=~/.my_bash_history
+fi
 
-export HISTFILESIZE=
-export HISTSIZE=10000
-export HISTTIMEFORMAT="%a %D %H:%m "
-# fix other programs truncating the .bash_history file
-# via http://superuser.com/questions/575479/bash-history-truncated-to-500-lines-on-each-login
-export HISTFILE=~/.my_bash_history
+if [ "$(shell_type)" = "zsh" ]; then
+    setopt dotglob
+fi
 
-if [[ ! -z $(which nvim) ]]; then
+if [ ! -z "$(which nvim)" ]; then
     export EDITOR=`which nvim`
 else
     export EDITOR=`which vim`
@@ -92,4 +98,4 @@ fi
 
 PROMPT_DIRTRIM=2
 # add admin binaries, even if we can't run them
-export PATH+=':/sbin/:/usr/sbin/:/usr/local/sbin/'
+export PATH="$PATH:/sbin/:/usr/sbin/:/usr/local/sbin/"

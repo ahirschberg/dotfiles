@@ -1,0 +1,11 @@
+#!/bin/bash
+secs=$1
+xset dpms $secs $secs $secs
+
+if [[ "$secs" == 0 ]]; then
+    xautolock -disable
+else
+    xautolock_mins=$((($secs + 15) / 60 + 1))
+    echo $xautolock_mins
+    xautolock -enable -time $xautolock_mins -locker "$HOME/.scripts/powerman autolock"
+fi

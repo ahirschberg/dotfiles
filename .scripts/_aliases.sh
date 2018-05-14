@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 # Aliases for bash
 # Copyright © 2017 Alex Hirschberg
@@ -38,7 +38,9 @@ alias cks="java -jar $GATECH_CS/ta_1331/resource/checkstyle-6.2.2.jar $@"
 alias cdd="cd ../.."
 
 # add autojump commands
-if [ -f /usr/share/autojump/autojump.sh ]; then
+if [ "$(shell_type)" = "zsh" ]; then
+    : # do nothing, zsh handles autojump
+elif [ -f /usr/share/autojump/autojump.sh ]; then
     source /usr/share/autojump/autojump.sh
 elif [ -f /usr/share/autojump/autojump.bash ]; then
     source /usr/share/autojump/autojump.bash
@@ -69,6 +71,10 @@ alias l="ls"
 alias la="ls -a"
 alias ll="ls -lh"
 alias lla="ls -lha"
+
+function catall() {
+    tail -vn +1 $@ | less
+}
 
 function hgrep() {
     history | grep $@ | less
