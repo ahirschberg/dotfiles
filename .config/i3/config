@@ -171,10 +171,10 @@ bindsym XF86PowerOff exec "~/.scripts/powerman"
 bindsym --release Print exec "mkdir -p /tmp/Screenshots/ && scrot -s /tmp/Screenshots/%Y-%m-%d%H:%M:%S.png"
 
 # add wifi applet
-exec_always nm-applet
+# exec_always nm-applet
 
 # set desktop background via feh
-exec_always ~/.fehbg
+exec_always --no-startup-id ~/.fehbg
 
 exec --no-startup-id "sudo powertop --auto-tune"
 exec --no-startup-id "sleep 1; xautolock -time 1 -locker \"~/.scripts/powerman autolock\""

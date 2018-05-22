@@ -74,7 +74,7 @@ function show_termcolors() {
     echo
 }
 
-if [[ $(tput colors) -gt 8 ]]; then
+if [[ "$(shell_type)" = "bash" && $(tput colors) -gt 8 ]]; then
 
     BOLD="\[$(tput bold)\]"
     DIM="\[$(tput dim)\]"
