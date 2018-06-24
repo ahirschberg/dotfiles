@@ -116,7 +116,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-source .init_scripts.sh
+source $HOME/.init_scripts.sh
 bindkey "\e[3~" delete-char
 bindkey "^[Od" backward-word
 bindkey "^[Oc" forward-word

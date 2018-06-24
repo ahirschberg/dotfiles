@@ -162,7 +162,7 @@ bar {
 }
 
 # session management binds
-# bindsym $mod+Shift+i exec i3-msg exit
+bindsym $mod+Shift+i exec "i3lock"
 # bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
 bindsym $mod+Shift+Escape exec "~/.scripts/powerman suspend"
