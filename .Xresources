@@ -1,3 +1,5 @@
+Xcursor.size: 20
+
 URxvt.color12: rgb:5c/5c/cc
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=15,\
             xft:Noto Mono
@@ -6,10 +8,9 @@ URxvt.font: xft:DejaVu Sans Mono:pixelsize=15,\
 /*             xft:DejaVu Sans Mono:pixelsize=15, \ */
 /*             xft:Nimbus Mono L:pixelsize=15, \ */
 
-URxvt.perl-ext-common: font-size
-!,
+URxvt.perl-ext-common: default,matcher,selection-to-clipboard,font-size
 
-URxvt.scrollBar: false
+!URxvt.scrollBar: false
 
 ! special
 *.foreground:   #dedede
@@ -47,3 +48,52 @@ URxvt.scrollBar: false
 ! white
 *.color7:       #d3d7cf
 *.color15:      #eeeeec
+
+
+URxvt.saveLines: 10000
+URxvt.scrollBar: true
+URxvt.scrollstyle: rxvt
+URxvt.scrollBar_floating: true
+URxvt.scrollColor: #aaaaaa
+URxvt.scrollBar_right: true
+
+! apparently there is some minimum
+URxvt.thickness: 1
+! Scroll locking
+URxvt.scrollTtyOutput:      false
+URxvt.scrollWithBuffer:     true
+URxvt.scrollTtyKeypress:    true
+
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+!URxvt.keysym.C-M-c:    builtin-string:
+!URxvt.keysym.C-M-v:    builtin-string:
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+! I dont know why, but I needed to use hex keysym values to get it to work
+! URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+! URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+URxvt.keysym.Home: \033[H
+URxvt.keysym.End:  \033[F
+
+! match vte/xterm
+URxvt.keysym.Control-Up:    \033[1;5A
+URxvt.keysym.Control-Down:  \033[1;5B
+URxvt.keysym.Control-Left:  \033[1;5D
+URxvt.keysym.Control-Right: \033[1;5C
+
+! clear the scrollback
+URxvt.keysym.Control-l: command:\033c
+
+! Interaction
+! ===========
+
+! allow filepaths to select as one, otherwise delimit
+URxvt.cutchars: "\"(),<>[]{}|'`"
+
+! For clickable urls (RMB), not an exact match to gnome-shell.
+URxvt.url-launcher: google-chrome
+URxvt.matcher.button: 3
+
+

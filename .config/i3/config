@@ -49,8 +49,8 @@ bindsym $mod+d exec dmenu_run -nb "#251c45" -sb "#D84315" -nf "#9E9D24" -sf "#FF
 
 # change focus
 bindsym $mod+h focus left
-bindsym $mod+j focus up
-bindsym $mod+k focus down
+bindsym $mod+j focus down
+bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
@@ -61,8 +61,8 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move up
-bindsym $mod+Shift+k move down
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
@@ -132,10 +132,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -277,3 +277,6 @@ mode "go_to_window" {
 bindsym $mod+Shift+m mode "go_to_window"
 bindsym $mod+p mode "go_to_window"
 bindsym $mod+m mode "mark_window"
+
+
+exec --no-startup-id urxvtd

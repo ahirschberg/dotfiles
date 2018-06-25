@@ -41,7 +41,7 @@ set colorcolumn=81
 
 " Filetypes tweaks:
 nnoremap <F5> :make<CR>
-autocmd Filetype ruby,css,scss,html,typescript setlocal ts=2 sts=2 sw=2
+autocmd Filetype python,ruby,css,scss,html,typescript setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :w<CR>:!pdflatex %<CR>
 
 " Editor meta:
@@ -67,8 +67,13 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Syntastic:
 " disable for asm files since there are many different types
 let g:syntastic_mode_map= { "passive_filetypes": ["asm", "tex"] }
-" let g:syntastic_python_python_exec = "python3"
+let g:syntastic_python_python_exec = "python3"
 " leader+st to toggle
 nnoremap <leader>st :SyntasticToggleMode<CR>
 let g:syntastic_java_javac_config_file_enabled = 1
 
+autocmd BufNewFile,BufRead *.sky set syntax=bzl
+
+
+let g:ctrlp_user_command =
+      \ ['.hg', 'hg --cwd %s status -numac -I . $(hg root)'] " MacOSX/Linux
