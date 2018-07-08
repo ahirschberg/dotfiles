@@ -80,4 +80,6 @@ function hgrep() {
     history | grep $@ | less
 }
 
+alias whomst="who | sed -E 's/a|b|g|m|p/[b]/g'"
+
 alias odh="od -A x -t x1z -v"

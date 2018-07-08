@@ -22,7 +22,7 @@
 if [ "$(shell_type)" = "bash" ]; then
     shopt -s globstar
     shopt -s histverify
-    shopt -s dotglob
+    # shopt -s dotglob
     export HISTFILESIZE=
     export HISTSIZE=10000
     export HISTTIMEFORMAT="%a %D %H:%m "
@@ -89,7 +89,7 @@ if [[ "$(shell_type)" = "bash" && $(tput colors) -gt 8 ]]; then
     if [[ ! -v HAS_POWERLINE_GLYPHS ]]; then
         CF1="$RESET\[$(tput setaf 238)$(tput setab 237)\]"
         CF2="$RESET\[$(tput setaf 236)$(tput setab 235)\]"
-        export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe)$CF1▌$CF2▌$RESET "
+        export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM$CF1▌$CF2▌$RESET "
     else
         CF1="$RESET\[$(tput setaf 238)\]"
         export PS1="$PBACK\[\$(set_pcolor)\]•$PBACK \w $DIM\u$(host_maybe) ${CF1}$RESET "
