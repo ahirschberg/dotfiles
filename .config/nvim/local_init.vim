@@ -41,7 +41,7 @@ set colorcolumn=81
 
 " Filetypes tweaks:
 nnoremap <F5> :make<CR>
-autocmd Filetype ruby,css,scss,html,typescript setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby,css,scss,html,typescript,python setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :w<CR>:!pdflatex %<CR>
 
 " Editor meta:

@@ -15,6 +15,7 @@ try_lock_gnome() {
 
 do_suspend() {
     try_lock_gnome
+    pkill keepassxc
     sudo $1
 }
 
