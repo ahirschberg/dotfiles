@@ -7,5 +7,6 @@ if [[ "$secs" == 0 ]]; then
 else
     xautolock_mins=$((($secs + 15) / 60 + 1))
     echo $xautolock_mins
+    pkill xautolock
     xautolock -enable -time $xautolock_mins -locker "$HOME/.scripts/powerman autolock"
 fi

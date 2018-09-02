@@ -41,8 +41,12 @@ set colorcolumn=81
 
 " Filetypes tweaks:
 nnoremap <F5> :make<CR>
-autocmd Filetype python,ruby,css,scss,html,typescript setlocal ts=2 sts=2 sw=2
+autocmd Filetype python,ruby,css,scss,html,typescript,javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :w<CR>:!pdflatex %<CR>
+
+function SetTabWidth(width)
+    exec ":setlocal ts=" . a:width . " sts=" . a:width . " sw=" . a:width
+endfunction
 
 " Editor meta:
 " set autocomplete to include hyphens for certain filetypes

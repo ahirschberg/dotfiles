@@ -60,7 +60,11 @@ function pkg-u() {
 }
 alias pkg-l="apt list --upgradable"
 function o() {
-    xdg-open "$@" >/dev/null &
+    if [ "$(shell_type)" = "zsh" ]; then
+        sh -c "nohup xdg-open \"$@\"" 2&>/dev/null &!
+    else
+        sh -c "nohup xdg-open \"$@\"" 2&>/dev/null &
+    fi
 }
 
 #alias ipython2="python `which ipython`"
@@ -77,9 +81,10 @@ function catall() {
 }
 
 function hgrep() {
-    history | grep $@ | less
+    history | grep "$@" | less
 }
 
 alias whomst="who | sed -E 's/a|b|g|m|p/[b]/g'"
 
 alias odh="od -A x -t x1z -v"
+

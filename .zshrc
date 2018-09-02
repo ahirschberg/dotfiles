@@ -120,3 +120,5 @@ source $HOME/.init_scripts.sh
 bindkey "\e[3~" delete-char
 bindkey "^[Od" backward-word
 bindkey "^[Oc" forward-word
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word

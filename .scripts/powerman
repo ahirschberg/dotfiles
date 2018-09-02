@@ -1,34 +1,31 @@
 #!/usr/bin/env bash
 
-binaries_loc='/usr/sbin'
+readonly binaries_loc='/usr/sbin'
 
 
-power_hibernate="$binaries_loc/pm-hibernate"
-power_suspend="$binaries_loc/pm-suspend"
-power_shutdown="/sbin/shutdown now"
-cmd_to_run=''
-locktime=120
+readonly power_hibernate="$binaries_loc/pm-hibernate"
+readonly power_suspend="$binaries_loc/pm-suspend"
+readonly power_shutdown="/sbin/shutdown now"
+declare cmd_to_run=''
+declare -ri locktime=120
 
-try_lock_gnome() {
-   nohup i3lock -c 4A4A4A > /dev/null
+powerman::lock() {
+    nohup i3lock -c 4A4A4A > /dev/null
 }
 
-do_suspend() {
-    try_lock_gnome
-    pkill keepassxc
+powerman::run() {
+    powerman::lock
     sudo $1
 }
 
-
-echo $#
-if [ $# != '0' ]; then
+if [[ $# != '0' ]]; then
     case "$1" in
         hibernate)
-            do_suspend "$power_hibernate"
+            pkill keepassxc
+            powerman::run "$power_hibernate"
             ;;
         suspend)
-            do_suspend "$power_suspend"
-            try_lock_gnome
+            powerman::run "$power_suspend"
             ;;
         autolock)
             monitor_status=$(xset q | grep Monitor | cut -d' ' -f5)
@@ -38,14 +35,14 @@ if [ $# != '0' ]; then
 
                 curtime=$(date +%s)
                 if [ $(($curtime - $pretime)) -ge $locktime ]; then
-                    try_lock_gnome
+                    powerman::lock
                 fi
             else
                 echo "Not locking; screen not off"
             fi
             ;;
         lock)
-            try_lock_gnome
+            powerman::lock
             ;;
         *)
             echo "Invalid argument: '$1'"
@@ -53,7 +50,5 @@ if [ $# != '0' ]; then
             ;;
     esac
 else # default command
-    do_suspend "$power_suspend"
+    powerman::run "$power_suspend"
 fi
-
-
