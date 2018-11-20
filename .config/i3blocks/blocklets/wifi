@@ -36,8 +36,8 @@ SSID=${SSID:0:4} # truncate SSID
 
 output="$QUALITY $SSID"
 
-echo $output # full text
-echo $output # short text
+echo "$output" # full text
+echo "$output" # short text
 
 # color
 if [[ $QUALITY -ge 80 ]]; then

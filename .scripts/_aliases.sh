@@ -61,9 +61,9 @@ function pkg-u() {
 alias pkg-l="apt list --upgradable"
 function o() {
     if [ "$(shell_type)" = "zsh" ]; then
-        sh -c "nohup xdg-open \"$@\"" 2&>/dev/null &!
+        sh -c "nohup xdg-open \"$@\" >/dev/null" 2&>/dev/null &!
     else
-        sh -c "nohup xdg-open \"$@\"" 2&>/dev/null &
+        sh -c "nohup xdg-open \"$@\" >/dev/null" 2&>/dev/null &
     fi
 }
 
@@ -88,3 +88,4 @@ alias whomst="who | sed -E 's/a|b|g|m|p/[b]/g'"
 
 alias odh="od -A x -t x1z -v"
 
+alias fixtime="sudo ntpd -ds"

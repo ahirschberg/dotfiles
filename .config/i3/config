@@ -158,7 +158,7 @@ bindsym $mod+Shift+i exec "~/.scripts/powerman lock"
 # bindsym $mod+i exec gnome-screensaver-command -l
 bindsym $mod+Control+Escape exec shutdown now
 bindsym $mod+Shift+Escape exec "~/.scripts/powerman suspend"
-bindsym Shift+XF86PowerOff exec "sudo ~/.scripts/powerman hibernate"
+bindsym Shift+XF86PowerOff exec "~/.scripts/powerman hibernate"
 bindsym XF86PowerOff exec "~/.scripts/powerman"
 bindsym --release Print exec "mkdir -p /tmp/Screenshots/ && scrot -s /tmp/Screenshots/%Y-%m-%d%H:%M:%S.png"
 
@@ -247,5 +247,5 @@ bindsym $mod+p exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: ' ; mode "
 bindsym $mod+m mode "go_to_window"
 bindsym $mod+Shift+m mode "mark_window"
 
-bindsym $mod+g exec "pkill firefox -SIGSTOP"
-bindsym $mod+Shift+g exec "pkill firefox -SIGCONT"
+bindsym $mod+g exec bash -c 'kill -SIGSTOP "$($HOME/.scripts/i3_freezer)"'
+bindsym $mod+Shift+g exec bash -c 'kill -SIGCONT "$($HOME/.scripts/i3_freezer)"'

@@ -41,7 +41,7 @@ set colorcolumn=81
 
 " Filetypes tweaks:
 nnoremap <F5> :make<CR>
-autocmd Filetype python,ruby,css,scss,html,typescript,javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype c,python,ruby,css,scss,html,typescript,javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype tex nnoremap <F5> :w<CR>:!pdflatex %<CR>
 
 function SetTabWidth(width)
@@ -81,3 +81,6 @@ autocmd BufNewFile,BufRead *.sky set syntax=bzl
 
 let g:ctrlp_user_command =
       \ ['.hg', 'hg --cwd %s status -numac -I . $(hg root)'] " MacOSX/Linux
+
+" toggle relativenumber
+map <leader>n :set relativenumber!<CR>
